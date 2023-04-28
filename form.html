@@ -59,16 +59,22 @@
 <script>
     function submitting(event){
         event.preventDefault();
-        // console.log(event.target.clientname.value)
-        localStorage.setItem('name', event.target.clientname.value)
-        // console.log(event.target.emailadd.value)
-        localStorage.setItem('Email', event.target.emailadd.value)
-        // console.log(event.target.phoneno.value)
-        localStorage.setItem('phone:no', event.target.phoneno.value)
-        // console.log(event.target.date.value)
-        localStorage.setItem('date', event.target.date.value )
-        // console.log(event.target.timing.value)
-        localStorage.setItem('timing', event.target.timing.value )
+    
+        var name = event.target.clientname.value;
+        var email = event.target.emailadd.value;
+        var phoneno = event.target.phoneno.value;
+        var date = event.target.date.value;
+        var time = event.target.timing.value;
+
+        const obj = {
+            name,
+            email,
+            phoneno,
+            date,
+            time
+        }
+        localStorage.setItem('userdetails', JSON.stringify(obj))
+  
 }
 </script>
 </body>
