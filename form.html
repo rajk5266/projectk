@@ -76,9 +76,24 @@
         }
        localStorage.setItem(obj.email, JSON.stringify(obj))
        showuseronscreen(obj)
+
        function showuseronscreen(obj){
         var parentelem = document.getElementById('listOfitems')
-        parentelem.innerHTML = parentelem.innerHTML + `<li>${obj.name} - ${obj.email} - ${obj.phoneno} - ${obj.date} - ${obj.time}</li>`
+
+        var childelem = document.createElement('li')
+         childelem.textContent = obj.name + '-' + obj.email + '-' + obj.phoneno + '-' + obj.date + '-' + obj.time
+
+         const delbtn = document.createElement('input')
+         delbtn.type = "button"
+         delbtn.value = 'DELETE'
+         delbtn.style.backgroundColor = 'coral'
+         delbtn.onclick  = () => {
+            localStorage.removeItem(obj.email)
+            parentelem.removeChild(childelem)
+         }
+         childelem.appendChild(delbtn)
+         parentelem.appendChild(childelem)
+        // parentelem.innerHTML = parentelem.innerHTML + `<li>${obj.name} - ${obj.email} - ${obj.phoneno} - ${obj.date} - ${obj.time} </li>`
        }
    
   
