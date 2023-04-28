@@ -17,7 +17,7 @@
     background-color: rgb(210, 224, 237);
     font-family: 'Gill Sans', 'Gill Sans MT', Calibri, 'Trebuchet MS', sans-serif;
 }
-#ele{
+.ele{
     border: 3px solid rgb(34, 47, 57);
     text-align: center;
 }
@@ -32,21 +32,21 @@
     <div class="col-12 text-center"><h1 class="text-primary"><strong>Book a call</strong></h1></div>
         <div class="mb-3 mt-3 text-center">
     <label>YOUR NAME:</label><br>
-    <input id="ele"  type="text" name="clientname" placeholder="name"><br>
+    <input class="ele" id="clientnameInputTag" type="text" name="clientname" placeholder="name"><br>
         </div>
         <div class="mb-3 text-center">
     <label>EMAIL:</label><br>
-    <input id="ele" type="email" name="emailadd" placeholder="youremail"><br>
+    <input class="ele" id="emailInputTag" type="email" name="emailadd" placeholder="youremail"><br>
     </div>
     <div class="mb-3 text-center">
     <label>PHONE-No:</label><br>
-    <input id="ele" type="text" name="phoneno"placeholder="phone-no."><br></div>
+    <input class="ele" id="phoneNumberInputTag" type="text" name="phoneno"placeholder="phone-no."><br></div>
      <div class="mb-3 text-center">
     <label>Time for call:</label>
 </div>
      <div class="text-center">
-    <input id="ele" type="date" name="date">
-    <input id="ele" type="time" name="timing">
+    <input class="ele" id="datetg" type="date" name="date">
+    <input class="ele" id="timetag" type="time" name="timing">
      </div>
     <br>
         <div class="text-center mt-2 mb-3">
@@ -91,7 +91,21 @@
             localStorage.removeItem(obj.email)
             parentelem.removeChild(childelem)
          }
+         const edit = document.createElement('input')
+         edit.type = "button"
+         edit.value = 'EDIT'
+         edit.onclick =() =>{
+            localStorage.removeItem(obj.email)
+            parentelem.removeChild(childelem)
+            document.getElementById('clientnameInputTag').value = obj.name
+            document.getElementById('emailInputTag').value = obj.email
+            document.getElementById('phoneNumberInputTag').value = obj.phoneno
+            document.getElementById('datetag').value = obj.date
+            document.getElementById('timetag').value = obj.time
+         }
+
          childelem.appendChild(delbtn)
+         childelem.appendChild(edit)
          parentelem.appendChild(childelem)
         // parentelem.innerHTML = parentelem.innerHTML + `<li>${obj.name} - ${obj.email} - ${obj.phoneno} - ${obj.date} - ${obj.time} </li>`
        }
