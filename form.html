@@ -53,9 +53,10 @@
     <button type="reset" class="btn btn-danger btn-rounded">RESET INFORMATION</button>
     <button type="submit" class="btn btn-success">GET A CALL</button></div>
     
+    <ul id="listOfitems"></ul>
 </form>
 </div>
-    </section>
+</section>
 <script>
     function submitting(event){
         event.preventDefault();
@@ -73,7 +74,13 @@
             date,
             time
         }
-        localStorage.setItem('userdetails', JSON.stringify(obj))
+       localStorage.setItem(obj.email, JSON.stringify(obj))
+       showuseronscreen(obj)
+       function showuseronscreen(obj){
+        var parentelem = document.getElementById('listOfitems')
+        parentelem.innerHTML = parentelem.innerHTML + `<li>${obj.name} - ${obj.email} - ${obj.phoneno} - ${obj.date} - ${obj.time}</li>`
+       }
+   
   
 }
 </script>
