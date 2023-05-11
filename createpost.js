@@ -45,3 +45,52 @@ preMovie().then((m)=>console.log(`person3 shows ${m}`))
 console.log("person4:shows ticket");
 console.log("person5:shows ticket");
 
+//ASYNC AWAIT METHOD
+const posts = [
+    {title: 'post1'},
+    {title: 'post2'},
+    {title: 'post3'},
+    {title: 'post4'}
+]
+let lastSeen
+async function abc(){
+function updateLastUserActivityTime (newpost){
+  return new Promise((resolve, reject) =>{
+    setTimeout(() => {
+    lastSeen = new Date()
+    // console.log(lastSeen)
+    resolve()
+    },1000)
+  })
+}
+await updateLastUserActivityTime()
+
+
+function createPost (){
+  return new Promise( (resolve, reject) => {
+    //   posts.push(newpost)
+    console.log(posts, lastSeen)
+      resolve()
+  })
+}
+await createPost(posts)
+
+
+function deletePost(){
+  posts.pop()
+  lastSeen = new Date()
+}
+ deletePost()
+}
+abc()
+// createPost({title: 'post3'})
+// createPost({title: 'post4'})
+// createPost({title: 'post5'})
+// createPost({title: 'post6'})
+// deletePost()
+
+// Promise.all([posts, lastSeen])
+
+// .then(values =>
+
+//   console.log(values))
